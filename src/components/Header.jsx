@@ -1,5 +1,4 @@
 import './Header.css';
-import { Container, Row, Col } from 'react-bootstrap';
 
 function Header() {
     return (

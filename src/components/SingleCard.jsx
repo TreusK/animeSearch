@@ -2,13 +2,12 @@ import './SingleCard.css';
 import { Card, ListGroup } from 'react-bootstrap';
 
 function SingleCard({ anime }) {
-    console.log(anime)
     return (
         <Card className='CardComp'>
             <Card.Img variant="top" src={anime.images.webp.image_url} className='CardImgComp'/>
             <Card.Body className='CardBodyComp'>
                 <Card.Text className='CardTxtComp'>{anime.title_english}</Card.Text>
-                <Card.Text className='CardTxtComp'>{anime.title_japanese}</Card.Text>
+                <Card.Text className='CardTxtComp CardTxtCompJap'>{anime.title_japanese}</Card.Text>
             </Card.Body>
             <Card.Footer>
                 <ListGroup variant="flush">

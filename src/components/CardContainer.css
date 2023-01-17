@@ -1,12 +1,10 @@
 .cardContainer {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey;
-    min-height: 400px;
+    background-color: beige;
+    flex: 1;
 }
 
-.cardContainer .col {
-    display: flex;
-    justify-content: center;
-}

@@ -2,7 +2,8 @@
     background-color: antiquewhite;
 }
 
-.row {
-    margin-right: 0;
-    margin-left: 0;
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

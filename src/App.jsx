@@ -1,17 +1,9 @@
 import './App.css';
-import { Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Search from './components/Search';
 import CardContainer from './components/CardContainer';
 
-let testAnime = {
-    image: 'urlhere',
-    titleEN: 'strHere',
-    titleJP: 'titlteJpHere',
-    episodes: 20,
-    synopsis: 'looooooooooong str here',
-}
 
 function App() {
     const [animeList, setAnimeList] = useState();
@@ -35,11 +27,11 @@ function App() {
     }
 
     return (
-        <Container fluid className='px-0'>
+        <div className='App'>
             <Header />
             <Search handleSearch={handleSearch} />
             <CardContainer animeList={animeList} loading={loading} searchName={searchName}/>
-        </Container>
+        </div>
     )
 }
 

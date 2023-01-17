@@ -1,5 +1,5 @@
 import './CardContainer.css';
-import {Col, Row, Spinner} from 'react-bootstrap';
+import {Spinner} from 'react-bootstrap';
 import SingleCard from './SingleCard';
 
 function CardContainer({ animeList, loading, searchName }) {
@@ -31,11 +31,9 @@ function CardContainer({ animeList, loading, searchName }) {
     }   
     return (
         <div className='cardContainer'>
-            <Row>
             { (filteredAnimeList && filteredAnimeList.length > 0)
-                ? filteredAnimeList.map(anime => <Col key={anime.mal_id}><SingleCard anime={anime} /></Col>)
+                ? filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)
                 : <h1>Random h1 on undefined anime list</h1>}
-            </Row>
         </div>
     )
 }
