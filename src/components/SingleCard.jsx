@@ -11,8 +11,12 @@ function SingleCard({ anime }) {
             </Card.Body>
             <Card.Footer>
                 <ListGroup variant="flush">
-                    <ListGroup.Item variant='light'>score: {anime.score}</ListGroup.Item>
-                    <ListGroup.Item variant='secondary'>episodes: {anime.episodes}</ListGroup.Item>                
+                    <ListGroup.Item className='listGroupItemComp' variant='light'>
+                        <p>score</p> <p>{anime.score}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item className='listGroupItemComp' variant='secondary'>
+                        <p>episodes</p> <p>{anime.episodes}</p>
+                    </ListGroup.Item>                
                 </ListGroup>
             </Card.Footer>
         </Card>

@@ -17,3 +17,16 @@
 .CardBodyComp {
     height: 150px;
 }
+
+.listGroupItemComp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-group-item {
+    display: flex;
+}
+
+.list-group-item p {
+    margin-bottom: 0;
+}

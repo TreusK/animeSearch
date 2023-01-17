@@ -8,6 +8,21 @@ function CardContainer({ animeList, loading, searchName }) {
                                 ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch)) 
                                 : undefined;
 
+    if(filteredAnimeList && filteredAnimeList.length == 0) {
+        filteredAnimeList = [{
+            mal_id: 100000,
+            images: {
+                webp: {
+                    image_url: '123',
+                },
+            },
+            title_english: 'Not Found',
+            title_japanese: '404',
+            score: '',
+            episodes: '',
+        }]
+    }
+
     function checkWords(title, wordsArr) {
         let containsAll = true;
         if(title === null) {
@@ -31,9 +46,9 @@ function CardContainer({ animeList, loading, searchName }) {
     }   
     return (
         <div className='cardContainer'>
-            { (filteredAnimeList && filteredAnimeList.length > 0)
+            { (filteredAnimeList)
                 ? filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)
-                : <h1>Random h1 on undefined anime list</h1>}
+                : <h1>World's best website to search anime!</h1>}
         </div>
     )
 }
