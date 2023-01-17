@@ -1,19 +1,21 @@
-//import './Card.css';
+import './SingleCard.css';
 import { Card, ListGroup } from 'react-bootstrap';
 
-function SingleCard({ animeList }) {
-    console.log(animeList)
+function SingleCard({ anime }) {
+    console.log(anime)
     return (
-        <Card style={{ width: '14rem' }}>
-            <Card.Img variant="top" src={animeList.images.webp.image_url} />
-            <Card.Body>
-                <Card.Title>{animeList.title_english}</Card.Title>
-                <Card.Title>{animeList.title_japanese}</Card.Title>
-                <ListGroup variant="flush">
-                    <ListGroup.Item>EPISODES: {animeList.episodes}</ListGroup.Item>
-                    <ListGroup.Item>SCORE: {animeList.score}</ListGroup.Item>
-                </ListGroup>
+        <Card className='CardComp'>
+            <Card.Img variant="top" src={anime.images.webp.image_url} className='CardImgComp'/>
+            <Card.Body className='CardBodyComp'>
+                <Card.Text className='CardTxtComp'>{anime.title_english}</Card.Text>
+                <Card.Text className='CardTxtComp'>{anime.title_japanese}</Card.Text>
             </Card.Body>
+            <Card.Footer>
+                <ListGroup variant="flush">
+                    <ListGroup.Item variant='light'>score: {anime.score}</ListGroup.Item>
+                    <ListGroup.Item variant='secondary'>episodes: {anime.episodes}</ListGroup.Item>                
+                </ListGroup>
+            </Card.Footer>
         </Card>
     )
 }

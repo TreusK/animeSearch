@@ -38,7 +38,7 @@ function App() {
         <Container fluid className='px-0'>
             <Header />
             <Search handleSearch={handleSearch} />
-            <CardContainer animeList={animeList} loading={loading}/>
+            <CardContainer animeList={animeList} loading={loading} searchName={searchName}/>
         </Container>
     )
 }

@@ -1,0 +1,19 @@
+.CardComp {
+    width: 14rem;
+    margin-top: 30px;
+}
+
+.CardImgComp {
+    width: 100%;
+    height: 15vw;
+    min-height: 150px;
+    object-fit: cover;
+}
+
+.CardTxtComp {
+    font-size: 0.8rem;
+}
+
+.CardBodyComp {
+    height: 150px;
+}

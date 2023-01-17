@@ -1,5 +1,12 @@
 .cardContainer {
     display: flex;
     justify-content: center;
-    background-color: aquamarine;
+    align-items: center;
+    background-color: lightgrey;
+    min-height: 400px;
+}
+
+.cardContainer .col {
+    display: flex;
+    justify-content: center;
 }
