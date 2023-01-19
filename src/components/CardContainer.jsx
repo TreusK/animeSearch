@@ -5,7 +5,6 @@ import img404 from '../assets/404.png';
 
 function CardContainer({ animeList, loading, searchName }) {
     let wordsInSearch = searchName.split(' ');
-    console.log(animeList)
     let filteredAnimeList = animeList 
                                 ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)) 
                                 : undefined;

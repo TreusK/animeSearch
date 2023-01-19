@@ -10,13 +10,19 @@ function SingleCard({ anime }) {
             {!flip &&
             <div className='front' onClick={() => setFlip(oldFlip => !oldFlip)}>
                 <Card.Img variant="top" src={anime.images.webp.image_url} className='CardImgComp'/>
-                <Card.Body className='CardBodyComp'>
-                    <Card.Text className='CardTxtComp'>{anime.title_english}</Card.Text>
+                <Card.Body className='CardBodyComp overflow'>
+                    <Card.Text className='CardTxtComp'>{anime.title_english ? anime.title_english : anime.title}</Card.Text>
                     <Card.Text className='CardTxtComp CardTxtCompJap'>{anime.title_japanese}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
                     <ListGroup variant="flush">
-                        <ListGroup.Item className='listGroupItemComp' variant={anime.score < 4 ? 'danger' : anime.score < 8 ? 'warning' : 'success'}>
+                        <ListGroup.Item className='listGroupItemComp' variant={anime.score 
+                                                                                    ? anime.score < 4 
+                                                                                        ? 'danger' 
+                                                                                        : anime.score < 8 
+                                                                                            ? 'warning' 
+                                                                                            : 'success'
+                                                                                    : 'light'}>
                             <p>score</p> <p>{anime.score}</p>
                         </ListGroup.Item>
                         <ListGroup.Item className='listGroupItemComp' variant='secondary'>
@@ -38,7 +44,7 @@ function SingleCard({ anime }) {
                             <p>year</p> <p>{(anime.year == null || anime.year.lenght == 0) ? '---' : anime.year}</p>
                         </ListGroup.Item>
                         <ListGroup.Item className='listGroupItemComp overflow' variant='info'>
-                                <a href={anime.url} target='_blank'>My Anime List</a>
+                                {anime.url ? <a href={anime.url} target='_blank'>My Anime List</a> : '---'}
                         </ListGroup.Item>                
                     </ListGroup>
                 </Card.Footer>

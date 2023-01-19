@@ -1,16 +1,21 @@
 .CardComp {
     display: flex;
-    width: 14rem;
+    width: 250px;
     margin-top: 30px;
-    min-height: 26rem !important;
+    height: 400px !important;
     user-select: none;
 }
 
 .CardImgComp {
     width: 100%;
-    height: 15vw;
+    height: 100px;
     min-height: 150px;
     object-fit: cover;
+    transition: all 1s;
+}
+.CardComp:hover .CardImgComp{
+    border-radius: 10px;
+    transform: scale(1.05);
 }
 
 .CardTxtComp {
