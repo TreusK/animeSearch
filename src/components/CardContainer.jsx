@@ -4,11 +4,13 @@ import SingleCard from './SingleCard';
 import img404 from '../assets/404.png';
 
 function CardContainer({ animeList, loading, searchName }) {
+    //Take words from the search and filter the results of the api with them (the api itself filters terribly)
     let wordsInSearch = searchName.split(' ');
     let filteredAnimeList = animeList 
                                 ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)) 
                                 : undefined;
 
+    //Make a 404 card in case there are no results                               
     if(filteredAnimeList && filteredAnimeList.length == 0) {
         filteredAnimeList = [{
             mal_id: 100000,
@@ -24,6 +26,7 @@ function CardContainer({ animeList, loading, searchName }) {
         }]
     }
 
+    //Helper function to filter the data form the api
     function checkWords(title, wordsArr) {
         let containsAll = true;
         if(title === null) {
@@ -38,6 +41,8 @@ function CardContainer({ animeList, loading, searchName }) {
         return containsAll;
     }
 
+
+    //Loading data shows the Spinner
     if(loading) {
         return (
             <div className='cardContainer'>
@@ -45,12 +50,21 @@ function CardContainer({ animeList, loading, searchName }) {
             </div>
         );
     }   
+    //Unexistent filtered anime list shows the initial message
+    if(!filteredAnimeList) {
+        return (
+            <div className="cardContainer">
+                <h1>World's best website to search anime!</h1>  
+            </div>  
+        )
+    }
+
     return (
-        <div className='cardContainer'>
-            { (filteredAnimeList)
-                ? filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)
-                : <h1>World's best website to search anime!</h1>}
-        </div>
+        <>
+            <div className='cardContainer'>
+                {filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)}
+            </div>
+        </>
     )
 }
 

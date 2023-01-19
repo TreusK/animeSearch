@@ -2,14 +2,21 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: rgb(82, 82, 247);
+    background-color: rgb(194, 194, 194);
     padding: 50px 0;
+}
+
+.Search p {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 15px;
 }
 
 .inputContainer {
     display: flex;
     width: 50%;
     margin: 0 auto;
+    margin-top: 50px;
     justify-content: space-evenly;
 }
 

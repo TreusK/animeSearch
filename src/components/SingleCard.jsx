@@ -17,9 +17,9 @@ function SingleCard({ anime }) {
                 <Card.Footer>
                     <ListGroup variant="flush">
                         <ListGroup.Item className='listGroupItemComp' variant={anime.score 
-                                                                                    ? anime.score < 4 
+                                                                                    ? anime.score < 5.5 
                                                                                         ? 'danger' 
-                                                                                        : anime.score < 8 
+                                                                                        : anime.score < 7.5
                                                                                             ? 'warning' 
                                                                                             : 'success'
                                                                                     : 'light'}>
