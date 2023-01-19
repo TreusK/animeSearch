@@ -1,6 +1,9 @@
 .CardComp {
+    display: flex;
     width: 14rem;
     margin-top: 30px;
+    min-height: 26rem !important;
+    user-select: none;
 }
 
 .CardImgComp {
@@ -19,7 +22,7 @@
 }
 
 .listGroupItemComp {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
 }
 
@@ -29,4 +32,8 @@
 
 .list-group-item p {
     margin-bottom: 0;
+}
+
+.overflow {
+    overflow: auto;
 }
