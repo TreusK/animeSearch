@@ -1,11 +1,13 @@
 import './CardContainer.css';
 import {Spinner} from 'react-bootstrap';
 import SingleCard from './SingleCard';
+import img404 from '../assets/404.png';
 
 function CardContainer({ animeList, loading, searchName }) {
     let wordsInSearch = searchName.split(' ');
+    console.log(animeList)
     let filteredAnimeList = animeList 
-                                ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch)) 
+                                ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)) 
                                 : undefined;
 
     if(filteredAnimeList && filteredAnimeList.length == 0) {
@@ -13,7 +15,7 @@ function CardContainer({ animeList, loading, searchName }) {
             mal_id: 100000,
             images: {
                 webp: {
-                    image_url: '123',
+                    image_url: img404,
                 },
             },
             title_english: 'Not Found',
