@@ -21,9 +21,8 @@ function App() {
         }
     }, [searchName]);
 
-    function handleSearch(e, input) {
-        e.preventDefault();
-        setSearchName(input);
+    function handleSearch(obj) {
+        setSearchName(obj.input);
     }
 
     return (
