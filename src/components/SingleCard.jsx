@@ -41,7 +41,7 @@ function SingleCard({ anime }) {
                 <Card.Footer>
                     <ListGroup variant="flush">
                         <ListGroup.Item className='listGroupItemComp' variant='dark'>
-                            <p>year</p> <p>{(anime.year == null || anime.year.lenght == 0) ? '---' : anime.year}</p>
+                            <p>year</p> <p>{anime.aired ? anime.aired.prop.from.year : '---'}</p>
                         </ListGroup.Item>
                         <ListGroup.Item className='listGroupItemComp overflow' variant='info'>
                                 {anime.url ? <a href={anime.url} target='_blank'>My Anime List</a> : '---'}

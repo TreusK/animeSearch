@@ -3,14 +3,14 @@ import {Spinner} from 'react-bootstrap';
 import SingleCard from './SingleCard';
 import img404 from '../assets/404.png';
 
-function CardContainer({ animeList, loading, searchName }) {
-    
+function CardContainer({ animeList, loading, formData }) {
     //Take words from the search and filter the results of the api with them (the api itself filters terribly)
-    let wordsInSearch = searchName.split(' ');
-    let filteredAnimeList = animeList 
-                                ? animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)) 
-                                : undefined;
-
+    let wordsInSearch, filteredAnimeList;
+    if(animeList) {
+        wordsInSearch = formData.input.split(' ');
+        filteredAnimeList = animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)); 
+    }
+    
     //Make a 404 card in case there are no results                               
     if(filteredAnimeList && filteredAnimeList.length == 0) {
         filteredAnimeList = [{
