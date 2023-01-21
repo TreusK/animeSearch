@@ -9,20 +9,35 @@ function App() {
     const [animeList, setAnimeList] = useState();
     const [loading, setLoading] = useState(false);
     const [searchName, setSearchName] = useState('');
+    const [formData, setFormData] = useState({
+        input: '',
+        genre: '',
+        year: '',
+    })
 
     useEffect(() => {
-        if (searchName.length > 2) {
+        if(!formIsEmpty(formData)) {
             setLoading(true);
-            fetch(`https://api.jikan.moe/v4/anime?q=${searchName}`)
+            let searchQuery = `q=${formData.input}&genres=${formData.genre}&start_date=${formData.year}`
+            fetch(`https://api.jikan.moe/v4/anime?${searchQuery}`)
                 .then(res => res.json())
                 .then(data => setAnimeList(data.data))
                 .catch(error => console.log(error))
                 .finally(() => setLoading(false))
-        }
-    }, [searchName]);
+        }       
+    }, [formData]);
 
     function handleSearch(obj) {
-        setSearchName(obj.input);
+        setFormData(obj); 
+    }
+
+    //Helper functions
+    function formIsEmpty(obj) {
+        let isEmpty = true;
+        for(let key in obj) {
+            if(obj[key] !== '') {isEmpty = false}
+        };
+        return isEmpty;
     }
 
     return (

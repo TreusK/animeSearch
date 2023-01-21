@@ -13,7 +13,6 @@ function Search({handleSearch}) {
     const [input, setInput] = useState('');
     const [genre, setGenre] = useState('');
     const [year, setYear] = useState('');
-    const [airing, setAiring] = useState(false);
 
     function handleInputChange(e) {
         setInput(e.target.value);
@@ -27,9 +26,6 @@ function Search({handleSearch}) {
         setYear(e.target.value);
     }
 
-    function handleAiringChange(e) {
-        setAiring(oldAiring => !oldAiring);
-    }
 
     function getFormData(e) {
         e.preventDefault();
@@ -37,7 +33,6 @@ function Search({handleSearch}) {
             input,
             genre,
             year,
-            airing,
         };
         handleSearch(formData);
     }
@@ -75,8 +70,6 @@ function Search({handleSearch}) {
                             {years.map(number => <option key={number} value={number}>{number}</option>)}
                         </Form.Select>
                     </Form.Group>
-
-                    <Form.Check checked={airing}  onChange={handleAiringChange} type='checkbox' id='Airing' label='Airing'/>
 
 
                     <Button type="submit" onClick={getFormData}>

@@ -4,7 +4,7 @@ import SingleCard from './SingleCard';
 import img404 from '../assets/404.png';
 
 function CardContainer({ animeList, loading, searchName }) {
-    console.log(animeList)
+    
     //Take words from the search and filter the results of the api with them (the api itself filters terribly)
     let wordsInSearch = searchName.split(' ');
     let filteredAnimeList = animeList 
@@ -27,7 +27,7 @@ function CardContainer({ animeList, loading, searchName }) {
         }]
     }
 
-    //Helper function to filter the data form the api
+    //Helper function to filter the data from the api
     function checkWords(title, wordsArr) {
         let containsAll = true;
         if(title === null) {
