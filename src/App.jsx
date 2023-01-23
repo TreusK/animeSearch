@@ -63,7 +63,7 @@ function App() {
     function formIsEmpty(obj) {
         let isEmpty = true;
         for (let key in obj) {
-            if (obj[key] !== '') { isEmpty = false }
+            if (obj[key] !== '' && obj[key] != 1) { isEmpty = false }
         };
         return isEmpty;
     }
@@ -73,7 +73,8 @@ function App() {
         let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
         let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}&` : '';
         let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
-        return (inputQuery + genreQuery + yearsQuery + pageQuery);
+        let orderQuery = 'order_by=mal_id&'
+        return (inputQuery + genreQuery + yearsQuery + orderQuery + pageQuery);
     }
 
 

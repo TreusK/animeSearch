@@ -9,11 +9,21 @@
 .Search p {
     max-width: 600px;
     margin: 0 auto;
-    padding-top: 15px;
+    padding-bottom: 15px;
 }
+
+.Search form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.labelContainer {
+    text-align: left;
+}
+
 
 .formContainer {
     text-align: left;
     padding: 0 100px;
 }
- 
+

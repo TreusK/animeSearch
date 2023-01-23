@@ -1,7 +1,7 @@
 import './Search.css';
 import {useState} from 'react';
 import { BiSearch } from 'react-icons/bi';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Col, Row} from 'react-bootstrap';
 
 //Years array to fill form option
 let years = [];
@@ -44,14 +44,16 @@ function Search({handleSearch}) {
             <p>Have you ever wanted to search for an anime series, but didn't feel like using google and somehow ended in here? Fret not, for you can still achieve your goal!</p>
             <p>Just write the name of the anime you're looking for and let the magic happen! (after a few seconds)</p>
             <p>You can also click on the results to read a synopsis and stuff</p>
-            <Form className='formContainer'>
-                    <Form.Group className='mb-3'>
+            <Form>
+                <Row className="mb-3">
+                    <Form.Group as={Col} sm={12} className='mb-3'>
                         <Form.Control type="input" placeholder='by Name' value={input} onChange={handleInputChange}/>
                     </Form.Group>
 
-                    <Form.Group className='mb-3'>
+                    <Form.Group as={Col} className='mb-3 labelContainer'>
+                        <Form.Label>by Genre</Form.Label>
                         <Form.Select value={genre} onChange={handleGenreChange}>
-                            <option value=''>by Genre</option>
+                            <option value=''>any</option>
                             <option value="2">Adventure</option>
                             <option value="4">Comedy</option>
                             <option value="39">Detective</option>
@@ -65,17 +67,18 @@ function Search({handleSearch}) {
                         </Form.Select>
                     </Form.Group>
 
-                    <Form.Group className='mb-3'>
+                    <Form.Group as={Col} className='mb-3 labelContainer'>
+                        <Form.Label>by Year</Form.Label>
                         <Form.Select value={year} onChange={handleYearChange}>
-                            <option value=''>by Year</option>
+                            <option value=''>any</option>
                             {years.map(number => <option key={number} value={number}>{number}</option>)}
                         </Form.Select>
                     </Form.Group>
+                </Row>
 
-
-                    <Button type="submit" onClick={getFormData}>
-                            Search <BiSearch />
-                    </Button>
+                <Button type="submit" onClick={getFormData}>
+                        Search <BiSearch />
+                </Button>      
             </Form>
         </div>
     )
