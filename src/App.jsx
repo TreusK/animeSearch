@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Header from './components/Header';
 import Search from './components/Search';
@@ -95,7 +95,8 @@ function App() {
             <Header />
             <Search handleSearch={handleSearch} />
             <CardContainer animeList={animeList} loading={loading} formData={formData} 
-                           currentPage={formData.currentPage} pagesAmount={pagesAmount} handlePageClick={handlePageClick}/>
+                           currentPage={formData.currentPage} pagesAmount={pagesAmount} 
+                           handlePageClick={handlePageClick} formIsEmpty={formIsEmpty} />
         </div>
     )
 }

@@ -3,11 +3,13 @@ import {Spinner} from 'react-bootstrap';
 import SingleCard from './SingleCard';
 import PaginationContainer from './PaginationContainer';
 import img404 from '../assets/404.png';
+import rei from '../assets/rei.jpg';
 
-function CardContainer({ animeList, loading, formData, currentPage, handlePageClick, pagesAmount }) {
+
+function CardContainer({ animeList, loading, formData, currentPage, handlePageClick, pagesAmount, formIsEmpty }) {
     //Take words from the search and filter the results of the api with them (the api itself filters terribly)
     let wordsInSearch, filteredAnimeList;
-    if(animeList) {
+    if(animeList && !formIsEmpty(formData)) {
         wordsInSearch = formData.input.split(' ');
         filteredAnimeList = animeList.filter(anime => checkWords(anime.title_english, wordsInSearch) || checkWords(anime.title, wordsInSearch)); 
     }
@@ -61,7 +63,7 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
     if(!filteredAnimeList) {
         return (
             <div className="cardContainer">
-                <h1>World's best website to search anime!</h1>  
+                <img className='reiImg' src={rei}/> 
             </div>  
         )
     }

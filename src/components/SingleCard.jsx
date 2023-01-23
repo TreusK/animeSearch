@@ -6,7 +6,7 @@ function SingleCard({ anime }) {
     const [flip, setFlip] = useState(false);
 
     return (
-        <Card className='CardComp' border='light' bg={!flip ? "light" : "secondary"} text={!flip ? "dark" : "white"}  >
+        <Card className='CardComp' border='secondary' bg={!flip ? "light" : "secondary"} text={!flip ? "dark" : "white"}  >
             {!flip &&
             <div className='front' onClick={() => setFlip(oldFlip => !oldFlip)}>
                 <Card.Img variant="top" src={anime.images.webp.image_url} className='CardImgComp'/>
@@ -14,7 +14,7 @@ function SingleCard({ anime }) {
                     <Card.Text className='CardTxtComp'>{anime.title_english ? anime.title_english : anime.title}</Card.Text>
                     <Card.Text className='CardTxtComp CardTxtCompJap'>{anime.title_japanese}</Card.Text>
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer className='CardFooterComp'>
                     <ListGroup variant="flush">
                         <ListGroup.Item className='listGroupItemComp' variant={anime.score 
                                                                                     ? anime.score < 5.5 

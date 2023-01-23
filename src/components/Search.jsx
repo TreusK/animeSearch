@@ -63,7 +63,7 @@ function Search({handleSearch}) {
                             <option value="14">Horror</option>
                             <option value="62">Isekai</option>
                             <option value="7">Mystery</option>
-                            <option value="27">Shoune</option>
+                            <option value="27">Shounen</option>
                             <option value="36">Slice of Life</option>
                         </Form.Select>
                     </Form.Group>
