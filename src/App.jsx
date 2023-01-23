@@ -71,7 +71,7 @@ function App() {
     function constructQuery(obj) {
         let inputQuery = (obj.input !== '') ? `q=${obj.input}&` : '';
         let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
-        let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}` : '';
+        let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}&` : '';
         let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
         return (inputQuery + genreQuery + yearsQuery + pageQuery);
     }
