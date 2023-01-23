@@ -21,6 +21,7 @@ function App() {
 
 
     useEffect(() => {
+        let ignore = false;
         if (!formIsEmpty(formData)) {
             setLoading(true); 
             console.log('fetchin');
@@ -31,12 +32,17 @@ function App() {
                     else return res.json()
                 })
                 .then(data => {
-                    setAnimeList(data.data);
-                    setPagesAmount(data.pagination.last_visible_page);
+                    if (!ignore) {
+                        setAnimeList(data.data);
+                        setPagesAmount(data.pagination.last_visible_page);
+                    }     
                 })
                 .catch(error => setError(true))
                 .finally(() => setLoading(false))
-        }
+        };
+        return () => {
+            ignore = true;
+        };
     }, [formData]);
 
     //handling state functions
@@ -65,7 +71,7 @@ function App() {
     function constructQuery(obj) {
         let inputQuery = (obj.input !== '') ? `q=${obj.input}&` : '';
         let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
-        let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&` : '';
+        let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}` : '';
         let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
         return (inputQuery + genreQuery + yearsQuery + pageQuery);
     }

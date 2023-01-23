@@ -47,9 +47,14 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
     //Loading data shows the Spinner
     if(loading) {
         return (
-            <div className='cardContainer'>
-                <Spinner animation="border" role="status" />
-            </div>
+            <>
+                {pagesAmount > 1 && 
+                        <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>}
+                <div className='cardContainer'>
+                    <Spinner animation="border" role="status" />
+                </div>
+            </>
+            
         );
     }   
     //Unexistent filtered anime list shows the initial message
@@ -63,7 +68,8 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
 
     return (
         <>
-             <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>
+            {pagesAmount > 1 && 
+            <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>}
             <div className='cardContainer'>
                 {filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)}
             </div>

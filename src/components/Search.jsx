@@ -33,7 +33,7 @@ function Search({handleSearch}) {
             input,
             genre,
             year,
-            currentPage: '',
+            currentPage: '1',
         };
         handleSearch(formData);
     }
@@ -82,8 +82,3 @@ function Search({handleSearch}) {
 }
 
 export default Search
-
-//Name
-//Genre
-//Year (starting)
-//Airing (box yes or no)
