@@ -4,8 +4,8 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+    min-height: 300px;
     background-color: rgb(59, 59, 59);
-    flex: 1;
     padding: 20px 50px 50px 50px;
 }
 

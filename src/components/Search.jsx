@@ -33,6 +33,7 @@ function Search({handleSearch}) {
             input,
             genre,
             year,
+            currentPage: '',
         };
         handleSearch(formData);
     }

@@ -1,0 +1,7 @@
+.PaginationContainer {
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+}

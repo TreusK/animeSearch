@@ -14,25 +14,43 @@ function App() {
         input: '',
         genre: '',
         year: '',
+        currentPage: '',
     })
+    //Pages states
+    const [pagesAmount, setPagesAmount] = useState(0);
+
 
     useEffect(() => {
         if (!formIsEmpty(formData)) {
             setLoading(true); 
+            console.log('fetchin');
             let searchQuery = constructQuery(formData);
             fetch(`https://api.jikan.moe/v4/anime?${searchQuery}`)
                 .then(res => {
                     if (!res.ok) throw new Error(res.status);
                     else return res.json()
                 })
-                .then(data => setAnimeList(data.data))
+                .then(data => {
+                    setAnimeList(data.data);
+                    setPagesAmount(data.pagination.last_visible_page);
+                })
                 .catch(error => setError(true))
                 .finally(() => setLoading(false))
         }
     }, [formData]);
 
+    //handling state functions
     function handleSearch(obj) {
+        setPagesAmount(0);
         setFormData(obj);
+    }
+
+    function handlePageClick(id) {
+        if(id == formData.currentPage) return;
+        setFormData({
+            ...formData,
+            currentPage: id,
+        });
     }
 
     //Helper functions
@@ -48,8 +66,10 @@ function App() {
         let inputQuery = (obj.input !== '') ? `q=${obj.input}&` : '';
         let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
         let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&` : '';
-        return (inputQuery + genreQuery + yearsQuery);
+        let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
+        return (inputQuery + genreQuery + yearsQuery + pageQuery);
     }
+
 
     return (
         <div className='App'>
@@ -67,7 +87,8 @@ function App() {
                 </Modal>}
             <Header />
             <Search handleSearch={handleSearch} />
-            <CardContainer animeList={animeList} loading={loading} formData={formData}/>
+            <CardContainer animeList={animeList} loading={loading} formData={formData} 
+                           currentPage={formData.currentPage} pagesAmount={pagesAmount} handlePageClick={handlePageClick}/>
         </div>
     )
 }

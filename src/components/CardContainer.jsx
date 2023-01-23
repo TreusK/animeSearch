@@ -1,9 +1,10 @@
 import './CardContainer.css';
 import {Spinner} from 'react-bootstrap';
 import SingleCard from './SingleCard';
+import PaginationContainer from './PaginationContainer';
 import img404 from '../assets/404.png';
 
-function CardContainer({ animeList, loading, formData }) {
+function CardContainer({ animeList, loading, formData, currentPage, handlePageClick, pagesAmount }) {
     //Take words from the search and filter the results of the api with them (the api itself filters terribly)
     let wordsInSearch, filteredAnimeList;
     if(animeList) {
@@ -62,6 +63,7 @@ function CardContainer({ animeList, loading, formData }) {
 
     return (
         <>
+             <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>
             <div className='cardContainer'>
                 {filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)}
             </div>
