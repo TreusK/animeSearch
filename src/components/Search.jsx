@@ -5,7 +5,8 @@ import {Form, Button, Col, Row} from 'react-bootstrap';
 
 //Years array to fill form option
 let years = [];
-for(let i=1960; i<=2023; i++) {
+let currentYear = new Date().getFullYear();
+for(let i=1960; i<=currentYear; i++) {
     years.unshift(i);
 }
 
@@ -46,11 +47,11 @@ function Search({handleSearch}) {
             <p>You can also click on the results to read a synopsis and stuff</p>
             <Form>
                 <Row className="mb-3">
-                    <Form.Group as={Col} sm={12} className='mb-3'>
+                    <Form.Group as={Col} xs={12} className='mb-3'>
                         <Form.Control type="input" placeholder='by Name' value={input} onChange={handleInputChange}/>
                     </Form.Group>
 
-                    <Form.Group as={Col} className='mb-3 labelContainer'>
+                    <Form.Group as={Col} xs={12} sm={6} className='mb-3 labelContainer'>
                         <Form.Label>by Genre</Form.Label>
                         <Form.Select value={genre} onChange={handleGenreChange}>
                             <option value=''>any</option>
@@ -67,7 +68,7 @@ function Search({handleSearch}) {
                         </Form.Select>
                     </Form.Group>
 
-                    <Form.Group as={Col} className='mb-3 labelContainer'>
+                    <Form.Group as={Col} xs={12} sm={6} className='mb-3 labelContainer'>
                         <Form.Label>by Year</Form.Label>
                         <Form.Select value={year} onChange={handleYearChange}>
                             <option value=''>any</option>
