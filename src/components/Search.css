@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: #34495e;
-    color: #eaf6f6;
+    background-color: #eeeeee;
     padding: 50px;
+    padding-bottom: 10px;
 }
 
 .Search p {
@@ -16,6 +16,9 @@
 .Search form {
     max-width: 600px;
     margin: 0 auto;
+    padding: 50px;
+    border-top: solid 2px rgb(218, 218, 218);
+    border-bottom: solid 2px rgb(218, 218, 218);
 }
 
 .labelContainer {

@@ -44,7 +44,7 @@ function Search({handleSearch}) {
             <h3>Simple jikan api consuming anime searching app</h3>
             <p>Have you ever wanted to search for an anime series, but didn't feel like using google and somehow ended in here? Fret not, for you can still achieve your goal!</p>
             <p>Just write the name of the anime you're looking for and let the magic happen! (after a few seconds)</p>
-            <p>You can also click on the results to read a synopsis and stuff</p>
+            <p>Click on a card to flip it</p>
             <Form>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} className='mb-3'>
@@ -77,7 +77,7 @@ function Search({handleSearch}) {
                     </Form.Group>
                 </Row>
 
-                <Button type="submit" onClick={getFormData}>
+                <Button variant="outline-dark" type="submit" onClick={getFormData}>
                         Search <BiSearch />
                 </Button>      
             </Form>

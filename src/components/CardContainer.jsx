@@ -15,7 +15,7 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
     }
     
     //Make a 404 card in case there are no results                               
-    if(filteredAnimeList && filteredAnimeList.length == 0) {
+    if(filteredAnimeList && filteredAnimeList.length === 0) {
         filteredAnimeList = [{
             mal_id: 100000,
             images: {
