@@ -6,7 +6,7 @@ function SingleCard({ anime }) {
     const [flip, setFlip] = useState(false);
 
     return (
-        <Card className='CardComp' border='secondary' bg={!flip ? "light" : "secondary"} text={!flip ? "dark" : "white"}  >
+        <Card className='CardComp' border='secondary' bg={!flip ? "light" : "dark"} text={!flip ? "dark" : "white"}  >
             {!flip &&
             <div className='front' onClick={() => setFlip(oldFlip => !oldFlip)}>
                 <Card.Img variant="top" src={anime.images.webp.image_url} className='CardImgComp'/>
