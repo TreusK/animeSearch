@@ -1,7 +1,7 @@
 .CardComp {
     display: flex;
     width: 250px;
-    height: 400px !important;
+    height: 400px;
     user-select: none;
     transition: all 0.3s;
 }
@@ -30,15 +30,10 @@
     height: 115px;
 }
 
-.listGroupItemComp {
-    display: flex !important;
-    justify-content: space-between;
-    padding: 5px 15px !important;
-}
-
-
-.list-group-item {
+.listGroupItemComp.list-group-item {
     display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
 }
 
 .list-group-item p {
