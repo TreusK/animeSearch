@@ -1,22 +1,22 @@
-import './PaginationContainer.css';
-import {Pagination} from 'react-bootstrap';
+import "./PaginationContainer.css";
+import { Pagination } from "react-bootstrap";
 
-function PaginationContainer({currentPage, pagesAmount, handlePageClick}) {
-    let items = [];
-    for (let number = 1; number <= pagesAmount; number++) {
-        items.push(
-            <Pagination.Item key={number} id={number} active={number == currentPage} onClick={(e) => handlePageClick(e.target.id)}>
-                {number}
-            </Pagination.Item>,
-        )
-    };
+function PaginationContainer({ currentPage, numPages, handlePageClick }) {
+  const items = new Array(numPages).fill(0).map((_, i) => (
+    <Pagination.Item
+      key={`pagination.${i}`}
+      active={currentPage == i + 1}
+      onClick={() => handlePageClick(i + 1)}
+    >
+      {i + 1}
+    </Pagination.Item>
+  ));
 
-
-   return (
-       <div className='PaginationContainer'>
-           <Pagination size="sm">{items}</Pagination>
-       </div>
-   )
+  return (
+    <div className="PaginationContainer">
+      <Pagination size="sm">{items}</Pagination>
+    </div>
+  );
 }
 
-export default PaginationContainer
+export default PaginationContainer;

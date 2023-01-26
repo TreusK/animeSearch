@@ -1,16 +1,16 @@
 .PaginationContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
 }
 
 .page-item .page-link {
-    background: #bdbcbc;
-    color: rgb(94, 93, 93);
+  background: #bdbcbc;
+  color: rgb(94, 93, 93);
 }
 
 .active.active .page-link {
-    background: rgb(61, 78, 109);
-    border-color: lightcyan;
+  background: rgb(61, 78, 109);
+  border-color: lightcyan;
 }
