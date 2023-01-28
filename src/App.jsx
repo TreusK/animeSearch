@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Header from './components/Header';
 import Search from './components/Search';
@@ -10,15 +10,14 @@ function App() {
     const [animeList, setAnimeList] = useState();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [pagesAmount, setPagesAmount] = useState(0);;
     const [formData, setFormData] = useState({
         input: '',
         genre: '',
         year: '',
         currentPage: '',
     })
-    //Pages states
-    const [pagesAmount, setPagesAmount] = useState(0);
-
+    
 
     useEffect(() => {
         let ignore = false;
@@ -73,7 +72,7 @@ function App() {
         let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
         let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}&` : '';
         let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
-        let orderQuery = 'order_by=mal_id&'
+        let orderQuery = 'order_by=mal_id&';
         return (inputQuery + genreQuery + yearsQuery + orderQuery + pageQuery);
     }
 

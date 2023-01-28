@@ -18,10 +18,6 @@
     transform: scale(1.05);
 }
 
-.CardComp:hover .CardImgComp {
-    transform: rotateY( 180deg );
-}
-
 .CardTxtComp {
     font-size: 0.8rem;
 }
@@ -42,4 +38,10 @@
 
 .overflow {
     overflow: auto;
+}
+
+@media (min-width: 400px) {
+  .CardComp:hover .CardImgComp {
+      transform: rotateY( 180deg );
+  }
 }
