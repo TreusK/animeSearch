@@ -10,7 +10,7 @@ for(let i=1960; i<=currentYear; i++) {
     years.unshift(i);
 }
 
-function Search({handleSearch}) {
+function Search({onSearch}) {
     const [input, setInput] = useState('');
     const [genre, setGenre] = useState('');
     const [year, setYear] = useState('');
@@ -36,7 +36,7 @@ function Search({handleSearch}) {
             year,
             currentPage: '1',
         };
-        handleSearch(formData);
+        onSearch(formData);
     }
 
     return (

@@ -5,6 +5,9 @@ import Header from './components/Header';
 import Search from './components/Search';
 import CardContainer from './components/CardContainer';
 
+//helper functions
+import {formIsEmpty, constructQuery} from './components/helper.js';
+
 
 function App() {
     const [animeList, setAnimeList] = useState();
@@ -58,24 +61,6 @@ function App() {
         });
     }
 
-    //Helper functions
-    function formIsEmpty(obj) {
-        let isEmpty = true;
-        for (let key in obj) {
-            if (obj[key] !== '' && obj[key] != 1) { isEmpty = false }
-        };
-        return isEmpty;
-    }
-
-    function constructQuery(obj) {
-        let inputQuery = (obj.input !== '') ? `q=${obj.input}&` : '';
-        let genreQuery = (obj.genre !== '') ? `genres=${obj.genre}&` : '';
-        let yearsQuery = (obj.year !== '') ? `start_date=${obj.year}&end_date=${+obj.year+1}&` : '';
-        let pageQuery = (obj.currentPage !== 1) ? `page=${obj.currentPage}&` : '';
-        let orderQuery = 'order_by=mal_id&';
-        return (inputQuery + genreQuery + yearsQuery + orderQuery + pageQuery);
-    }
-
 
     return (
         <div className='App'>
@@ -92,10 +77,10 @@ function App() {
                     </Modal.Footer>
                 </Modal>}
             <Header />
-            <Search handleSearch={handleSearch} />
+            <Search onSearch={handleSearch} />
             <CardContainer animeList={animeList} loading={loading} formData={formData} 
                            currentPage={formData.currentPage} pagesAmount={pagesAmount} 
-                           handlePageClick={handlePageClick} formIsEmpty={formIsEmpty} />
+                           onPageClick={handlePageClick} />
         </div>
     )
 }

@@ -5,8 +5,11 @@ import PaginationContainer from './PaginationContainer';
 import img404 from '../assets/404.png';
 import rei from '../assets/rei.jpg';
 
+//helper functions
+import {formIsEmpty, checkWords} from './helper.js';
 
-function CardContainer({ animeList, loading, formData, currentPage, handlePageClick, pagesAmount, formIsEmpty }) {
+
+function CardContainer({ animeList, loading, formData, currentPage, onPageClick, pagesAmount }) {
     //Take words from the search and filter the results of the api with them (the api itself filters terribly)
     let wordsInSearch, filteredAnimeList;
     if(animeList && !formIsEmpty(formData)) {
@@ -30,28 +33,13 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
         }]
     }
 
-    //Helper function to filter the data from the api
-    function checkWords(title, wordsArr) {
-        let containsAll = true;
-        if(title === null) {
-            containsAll = false;
-            return;
-        }
-        for(let word of wordsArr) {
-            if(!title.toLowerCase().includes(word.toLowerCase())) {
-                containsAll = false
-            }
-        }
-        return containsAll;
-    }
-
-
+    
     //Loading data shows the Spinner
     if(loading) {
         return (
             <>
                 {pagesAmount > 1 && 
-                        <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>}
+                        <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} onPageClick={onPageClick}/>}
                 <div className='cardContainer'>
                     <Spinner animation="border" role="status" />
                 </div>
@@ -71,7 +59,7 @@ function CardContainer({ animeList, loading, formData, currentPage, handlePageCl
     return (
         <>
             {pagesAmount > 1 && 
-            <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} handlePageClick={handlePageClick}/>}
+            <PaginationContainer pagesAmount={pagesAmount} currentPage={currentPage} onPageClick={onPageClick}/>}
             <div className='cardContainer'>
                 {filteredAnimeList.map(anime => <SingleCard key={anime.mal_id} anime={anime} />)}
             </div>
